@@ -1,0 +1,6 @@
+hummingbird:
+  profiles:
+    active: dev
+  application:
+    url: VHJvY2hpbGlkYWUtVVJM
+    name: hummingbird-Test

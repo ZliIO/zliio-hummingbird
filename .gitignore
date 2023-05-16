@@ -1,0 +1,11 @@
+# IntelliJ
+*.ipr
+*.iml
+*.iws
+.idea/
+
+target/
+
+*/target/
+
+*/*.iml

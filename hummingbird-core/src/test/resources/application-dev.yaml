@@ -1,0 +1,6 @@
+hummingbird:
+  application:
+    numberInt: 123456
+    numberLong: 1234567899876
+    numberDouble: 12345.6789
+    bool: true

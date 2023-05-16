@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zliio.hummingbird</groupId>
+    <artifactId>hummingbird-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>ZliIO :: Hummingbird</name>
+
+    <description>
+        一个基于 Netty 编写的轻量且高性能的 HTTP 服务器,无需额外依赖其他的 WEB 服务器
+    </description>
+
+    <properties>
+        <jackson-version>2.15.0</jackson-version>
+        <netty-version>4.1.92.Final</netty-version>
+        <slf4j-version>2.0.7</slf4j-version>
+        <reflections-version>0.10.2</reflections-version>
+        <cglib-version>3.3.0</cglib-version>
+        <commons-codec-version>1.15</commons-codec-version>
+        <snakeyaml-version>2.0</snakeyaml-version>
+        <junit-jupiter-version>5.9.3</junit-jupiter-version>
+        <hummingbird-version>1.0-SNAPSHOT</hummingbird-version>
+    </properties>
+
+    <modules>
+        <module>hummingbird-core</module>
+        <module>hummingbird-web</module>
+        <module>hummingbird-cache</module>
+        <module>hummingbird-example</module>
+    </modules>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- hummingbird: core ioc-->
+            <dependency>
+                <groupId>com.zliio.hummingbird</groupId>
+                <artifactId>hummingbird-core</artifactId>
+                <version>${hummingbird-version}</version>
+            </dependency>
+
+            <!-- 网络: Netty -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty-version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <!-- Json解析库：jackson -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-version}</version>
+                <optional>true</optional>
+
+            </dependency>
+
+            <!--   编解码    -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec-version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <!-- LOG日志:SLF4J -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j-version}</version>
+                <scope>test</scope>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.7.30</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.14.0</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>1.2</version>
+                <optional>true</optional>
+            </dependency>
+
+
+            <!-- 注解扫描:Reflections -->
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflections-version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <!-- 动态代理:Cglib -->
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib-version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <!-- yaml文件的读取:snake yaml -->
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml-version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter-version}</version>
+                <optional>true</optional>
+                <scope>test</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.3.0</version>
+                    <configuration>
+                        <descriptorRefs>
+                            <descriptorRef>
+                                jar-with-dependencies
+                            </descriptorRef>
+                        </descriptorRefs>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>
